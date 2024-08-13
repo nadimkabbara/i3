@@ -1,0 +1,13 @@
+
+configuration {
+	modi: "drun,window,ssh";
+	display-drun: "applications";
+	sidebar-mode: true;
+	font: "Ubuntu Mono 14";
+	show-icons: true;
+	icon-theme: "Papirus";
+
+
+}
+
+@theme "Arc-Dark"

@@ -1,0 +1,136 @@
+#command=/usr/lib/i3blocks/$BLOCK_NAME
+
+align=center
+separator=true
+separator_block_width=12
+markup=pango
+
+[spx]
+min_width=50
+label=$SPX
+command=~/.config/i3blocks/modules/stocks.sh | cut -c 1-7
+instance=150
+interval=60
+markup=pango
+
+[username]
+min_width=50
+label=
+command=users
+interval=100
+markup=pango
+color=#00ff00
+
+[ip]
+min_width=50
+label=@
+command=ifconfig re0 | grep -m 1 inet | awk '{print $2}'
+interval=100
+markup=pango
+color=#00ff00
+
+[network]
+min_width=50
+label=
+command=ifconfig re0 | grep media | cut -c 8-17
+interval=100
+markup=pango
+color=#00ff00
+
+[uptime]
+min_width=50
+label=
+command=uptime | grep up | awk '{print $2,$3}'
+interval=100
+markup=pango
+color=#ffff00
+
+[shell]
+label= 
+command=echo $SHELL | cut -c 16-19
+interval=100
+color=#ffff00
+
+[cpu]
+min_width=50
+color=#00ccff
+label= 
+command=~/.config/i3blocks/modules/cpu_load.sh
+interval=100
+
+[temp]
+label= 
+command=sysctl -n dev.cpu.0.temperature | cut -c 1-2,5
+interval=100
+color=#00ccff
+
+[memory]
+label=
+command=~/.config/i3blocks/modules/mem.sh
+markup=pango
+interval=1
+color=#00ccff
+
+[disk]
+label=:
+command=df -H | grep /dev/ada0p8 | awk '{print $3 "/" $2, $5}'
+interval=100
+color=#00ffff
+
+[volume]
+label=
+command=mixer | grep vol  | awk '{print $3}'
+interval=1
+signal=1
+color=#ff1a1a
+
+[key_layout]
+label= 
+command=echo $LANG
+interval=100
+
+[keyboard]
+label=
+command=echo $LANG
+command=dmesg -a | grep ukbd0: | awk 'NR == 1 {print $3,$4}' 
+interval=1000
+
+[weather]
+min_width=50
+command=curl wttr.in/Dubai?format=3
+interval=100
+markup=pango
+color=#ffff00
+
+[time]
+label=
+command=date '+%H:%M:%S  %A %B %d, %Y'
+interval=1
+color=#7070db
+
+#[backlight]
+#label=
+#command=~/.config/i3/modules/backlight
+#color=#ffffcc
+
+#[vpn]
+#label=
+#full_text=vpn
+#command=~/OpenVPN.sh
+#color=#ff1a1a
+
+#[internet]
+#label=
+#full_text=Internet
+#command=firefox --private-window
+#color=#ff1a1a
+
+[restart]
+full_text=  
+color=#ff1a1a
+command=shutdown -r now
+
+[shutdown]
+full_text=  
+color=#ff1a1a
+command=shutdown -p now
